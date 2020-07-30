@@ -26,7 +26,7 @@ view: lk_h_reserving_vectors {
     label: "UW Year"
   }
 
-  dimension: uw_year_dev_month {
+  dimension: uw_year_acc_month {
     type: number
     sql: case when ${TABLE}.uw_year = '1' then months_between(${TABLE}.acc_month,'2016-08-01')+1
               when ${TABLE}.uw_year = '2' then months_between(${TABLE}.acc_month,'2017-08-01')+1
