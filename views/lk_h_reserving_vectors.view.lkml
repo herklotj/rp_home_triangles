@@ -28,16 +28,16 @@ view: lk_h_reserving_vectors {
 
   dimension: uw_year_dev_month {
     type: number
-    sql: case when ${TABLE}.uw_year = '1' then months_between(${TABLE}.dev_month,'2016-08-01')+1
-              when ${TABLE}.uw_year = '2' then months_between(${TABLE}.dev_month,'2017-08-01')+1
-              when ${TABLE}.uw_year = '3' then months_between(${TABLE}.dev_month,'2018-08-01')+1
-              when ${TABLE}.uw_year = '4' then months_between(${TABLE}.dev_month,'2019-08-01')+1
-              when ${TABLE}.uw_year = '5' then months_between(${TABLE}.dev_month,'2020-08-01')+1
-              when ${TABLE}.uw_year = '6' then months_between(${TABLE}.dev_month,'2021-08-01')+1
-              when ${TABLE}.uw_year = '7' then months_between(${TABLE}.dev_month,'2022-08-01')+1
-              when ${TABLE}.uw_year = '8' then months_between(${TABLE}.dev_month,'2023-08-01')+1
-              when ${TABLE}.uw_year = '9' then months_between(${TABLE}.dev_month,'2024-08-01')+1
-              when ${TABLE}.uw_year = '10' then months_between(${TABLE}.dev_month,'2025-08-01')+1
+    sql: case when ${TABLE}.uw_year = '1' then months_between(${TABLE}.acc_month,'2016-08-01')+1
+              when ${TABLE}.uw_year = '2' then months_between(${TABLE}.acc_month,'2017-08-01')+1
+              when ${TABLE}.uw_year = '3' then months_between(${TABLE}.acc_month,'2018-08-01')+1
+              when ${TABLE}.uw_year = '4' then months_between(${TABLE}.acc_month,'2019-08-01')+1
+              when ${TABLE}.uw_year = '5' then months_between(${TABLE}.acc_month,'2020-08-01')+1
+              when ${TABLE}.uw_year = '6' then months_between(${TABLE}.acc_month,'2021-08-01')+1
+              when ${TABLE}.uw_year = '7' then months_between(${TABLE}.acc_month,'2022-08-01')+1
+              when ${TABLE}.uw_year = '8' then months_between(${TABLE}.acc_month,'2023-08-01')+1
+              when ${TABLE}.uw_year = '9' then months_between(${TABLE}.acc_month,'2024-08-01')+1
+              when ${TABLE}.uw_year = '10' then months_between(${TABLE}.acc_month,'2025-08-01')+1
               else null end   ;;
     label: "UW Year Dev"
   }
