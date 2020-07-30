@@ -54,9 +54,31 @@ view: lk_h_reserving_triangles {
               when ${TABLE}.uw_year = '5' then months_between(${TABLE}.dev_month,'2020-08-01')+1
               when ${TABLE}.uw_year = '6' then months_between(${TABLE}.dev_month,'2021-08-01')+1
               when ${TABLE}.uw_year = '7' then months_between(${TABLE}.dev_month,'2022-08-01')+1
+              when ${TABLE}.uw_year = '8' then months_between(${TABLE}.dev_month,'2023-08-01')+1
+              when ${TABLE}.uw_year = '9' then months_between(${TABLE}.dev_month,'2024-08-01')+1
+              when ${TABLE}.uw_year = '10' then months_between(${TABLE}.dev_month,'2025-08-01')+1
               else null end   ;;
     label: "UW Year Dev"
   }
+
+  dimension: cat_period {
+    type: string
+    sql: case when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2016-08-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2017-10-01')))
+                    then 'Cat Period 1 (Aug16 - Sep17)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2017-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2018-10-01')))
+                    then 'Cat Period 2 (Oct17 - Sep18)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2018-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2019-10-01')))
+                    then 'Cat Period 3 (Oct18 - Sep19)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2019-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2020-10-01')))
+                    then 'Cat Period 4 (Oct19 - Sep20)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2020-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2021-10-01')))
+                    then 'Cat Period 5 (Oct20 - Sep21)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2021-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2022-10-01')))
+                    then 'Cat Period 6 (Oct21 - Sep22)'
+              else null end   ;;
+    label: "Cat Period"
+  }
+
 
   ### Measures
 
@@ -776,4 +798,82 @@ view: lk_h_reserving_triangles {
     sql: ${TABLE}.sum_transactions ;;value_format_name: decimal_0
   }
 
+  measure: sum_ad_incurred {
+    label: "Peril Incurred - AD"
+    type:  sum
+    sql: ${TABLE}.sum_bds_ad_incurred + ${TABLE}.sum_cts_ad_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_eow_incurred {
+    label: "Peril Incurred - EoW"
+    type:  sum
+    sql: ${TABLE}.sum_bds_eow_incurred + ${TABLE}.sum_cts_eow_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_fire_incurred {
+    label: "Peril Incurred - Fire"
+    type:  sum
+    sql: ${TABLE}.sum_bds_fire_incurred + ${TABLE}.sum_cts_fire_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_flood_incurred {
+    label: "Peril Incurred - Flood"
+    type:  sum
+    sql: ${TABLE}.sum_bds_flood_incurred + ${TABLE}.sum_cts_flood_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_other_incurred {
+    label: "Peril Incurred - Other"
+    type:  sum
+    sql: ${TABLE}.sum_bds_other_incurred + ${TABLE}.sum_cts_other_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_storm_incurred {
+    label: "Peril Incurred - Storm"
+    type:  sum
+    sql: ${TABLE}.sum_bds_storm_incurred + ${TABLE}.sum_cts_storm_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_subs_incurred {
+    label: "Peril Incurred - Subsidence"
+    type:  sum
+    sql: ${TABLE}.sum_bds_subsidence_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_theft_incurred {
+    label: "Peril Incurred - Theft"
+    type:  sum
+    sql: ${TABLE}.sum_bds_theft_incurred + ${TABLE}.sum_cts_theft_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_pps_incurred {
+    label: "Peril Incurred - PPS"
+    type:  sum
+    sql: ${TABLE}.sum_cts_pps_incurred ;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_weather_incurred {
+    label: "Incurred - Weather"
+    type:  sum
+    sql: ${TABLE}.sum_bds_storm_incurred + ${TABLE}.sum_cts_storm_incurred + ${TABLE}.sum_bds_flood_incurred + ${TABLE}.sum_cts_flood_incurred;;
+    value_format_name: decimal_0
+  }
+
+  measure: sum_non_weather_incurred {
+    label: "Incurred - Non-Weather"
+    type:  sum
+    sql: ${TABLE}.sum_bds_ad_incurred + ${TABLE}.sum_cts_ad_incurred + ${TABLE}.sum_bds_eow_incurred + ${TABLE}.sum_cts_eow_incurred +
+         ${TABLE}.sum_bds_fire_incurred + ${TABLE}.sum_cts_fire_incurred + ${TABLE}.sum_bds_other_incurred + ${TABLE}.sum_cts_other_incurred +
+         ${TABLE}.sum_bds_subsidence_incurred + ${TABLE}.sum_bds_theft_incurred + ${TABLE}.sum_cts_theft_incurred + ${TABLE}.sum_cts_pps_incurred ;;
+    value_format_name: decimal_0
+  }
 }

@@ -26,17 +26,38 @@ view: lk_h_reserving_vectors {
     label: "UW Year"
   }
 
-  dimension: uw_year_acc_month {
+  dimension: uw_year_dev_month {
     type: number
-    sql: case when ${TABLE}.uw_year = '1' then months_between(${TABLE}.acc_month,'2016-08-01')+1
-              when ${TABLE}.uw_year = '2' then months_between(${TABLE}.acc_month,'2017-08-01')+1
-              when ${TABLE}.uw_year = '3' then months_between(${TABLE}.acc_month,'2018-08-01')+1
-              when ${TABLE}.uw_year = '4' then months_between(${TABLE}.acc_month,'2019-08-01')+1
-              when ${TABLE}.uw_year = '5' then months_between(${TABLE}.acc_month,'2020-08-01')+1
-              when ${TABLE}.uw_year = '6' then months_between(${TABLE}.acc_month,'2021-08-01')+1
-              when ${TABLE}.uw_year = '7' then months_between(${TABLE}.acc_month,'2022-08-01')+1
+    sql: case when ${TABLE}.uw_year = '1' then months_between(${TABLE}.dev_month,'2016-08-01')+1
+              when ${TABLE}.uw_year = '2' then months_between(${TABLE}.dev_month,'2017-08-01')+1
+              when ${TABLE}.uw_year = '3' then months_between(${TABLE}.dev_month,'2018-08-01')+1
+              when ${TABLE}.uw_year = '4' then months_between(${TABLE}.dev_month,'2019-08-01')+1
+              when ${TABLE}.uw_year = '5' then months_between(${TABLE}.dev_month,'2020-08-01')+1
+              when ${TABLE}.uw_year = '6' then months_between(${TABLE}.dev_month,'2021-08-01')+1
+              when ${TABLE}.uw_year = '7' then months_between(${TABLE}.dev_month,'2022-08-01')+1
+              when ${TABLE}.uw_year = '8' then months_between(${TABLE}.dev_month,'2023-08-01')+1
+              when ${TABLE}.uw_year = '9' then months_between(${TABLE}.dev_month,'2024-08-01')+1
+              when ${TABLE}.uw_year = '10' then months_between(${TABLE}.dev_month,'2025-08-01')+1
               else null end   ;;
     label: "UW Year Dev"
+  }
+
+  dimension: cat_period {
+    type: string
+    sql: case when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2016-08-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2017-10-01')))
+                    then 'Cat Period 1 (Aug16 - Sep17)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2017-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2018-10-01')))
+                    then 'Cat Period 2 (Oct17 - Sep18)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2018-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2019-10-01')))
+                    then 'Cat Period 3 (Oct18 - Sep19)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2019-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2020-10-01')))
+                    then 'Cat Period 4 (Oct19 - Sep20)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2020-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2021-10-01')))
+                    then 'Cat Period 5 (Oct20 - Sep21)'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2021-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2022-10-01')))
+                    then 'Cat Period 6 (Oct21 - Sep22)'
+              else null end   ;;
+    label: "Cat Period"
   }
 
   measure: buildings_exposure_aauicl {
