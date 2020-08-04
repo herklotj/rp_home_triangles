@@ -64,17 +64,17 @@ view: lk_h_reserving_triangles {
   dimension: cat_period {
     type: string
     sql: case when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2016-08-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2017-10-01')))
-                    then 'Cat Period 1 (Aug16 - Sep17)'
+                    then 'Aug16 - Sep17'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2017-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2018-10-01')))
-                    then 'Cat Period 2 (Oct17 - Sep18)'
+                    then 'Oct17 - Sep18'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2018-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2019-10-01')))
-                    then 'Cat Period 3 (Oct18 - Sep19)'
+                    then 'Oct18 - Sep19'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2019-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2020-10-01')))
-                    then 'Cat Period 4 (Oct19 - Sep20)'
+                    then 'Oct19 - Sep20'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2020-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2021-10-01')))
-                    then 'Cat Period 5 (Oct20 - Sep21)'
+                    then 'Oct20 - Sep21'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2021-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2022-10-01')))
-                    then 'Cat Period 6 (Oct21 - Sep22)'
+                    then 'Oct21 - Sep22'
               else null end   ;;
     label: "Cat Period"
   }
