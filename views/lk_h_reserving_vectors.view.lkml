@@ -62,6 +62,22 @@ view: lk_h_reserving_vectors {
     label: "UW Year Dev"
   }
 
+  dimension: fuw_year_acc_month {
+    type: number
+    sql: case when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2016-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2016-02-01' ))))) then months_between(${TABLE}.acc_month,'2016-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2017-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2017-02-01' ))))) then months_between(${TABLE}.acc_month,'2017-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2018-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2018-02-01' ))))) then months_between(${TABLE}.acc_month,'2018-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2019-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2019-02-01' ))))) then months_between(${TABLE}.acc_month,'2019-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2020-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2020-02-01' ))))) then months_between(${TABLE}.acc_month,'2020-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2021-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2021-02-01' ))))) then months_between(${TABLE}.acc_month,'2021-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2022-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2022-02-01' ))))) then months_between(${TABLE}.acc_month,'2022-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2023-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2023-02-01' ))))) then months_between(${TABLE}.acc_month,'2023-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2024-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2024-02-01' ))))) then months_between(${TABLE}.acc_month,'2024-02-01')+1
+              when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2025-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2025-02-01' ))))) then months_between(${TABLE}.acc_month,'2025-02-01')+1
+              else null end   ;;
+    label: "Accident Year Dev"
+  }
+
   dimension: cat_period {
     type: string
     sql: case when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2016-08-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2017-10-01')))
