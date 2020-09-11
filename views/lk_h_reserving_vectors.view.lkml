@@ -393,4 +393,87 @@ view: lk_h_reserving_vectors {
     group_label: "Earned RPM"
   }
 
+  ### Fields for COR
+
+  ## NEEDS UPDATING FOR 2021 ###
+  measure: flood_re_levy {
+    label: "Flood Re Levy"
+    type: sum
+    sql: case when ${TABLE}.uw_year = '1' then 0.0555*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.0567*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.0546*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.0528*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.0545*${TABLE}.earned_premium
+              else 0 end ;;
+    value_format_name: decimal_0
+    group_label: "COR Measures"
+  }
+
+  measure: flood_re_ratio {
+    label: "Flood Re Ratio"
+    type: number
+    sql: 1.0*${flood_re_levy}/nullif(${earned_premium},0) ;;
+    value_format_name: percent_1
+    group_label: "COR Measures"
+  }
+
+  ## NEEDS UPDATING FOR CAT 2020 RENEWAL ###
+  measure: cat_cost {
+    label: "Cat Cover Cost"
+    type: sum
+    sql: case when ${cat_period} = 'Aug16 - Sep17' then ${TABLE}.earned_premium*0.0800
+              when ${cat_period} = 'Oct17 - Sep18' then ${TABLE}.earned_premium*0.0995
+              when ${cat_period} = 'Oct18 - Sep19' then ${TABLE}.earned_premium*0.0917
+              when ${cat_period} = 'Oct19 - Sep20' then ${TABLE}.earned_premium*0.0917
+              else 0 end ;;
+    value_format_name: decimal_0
+    group_label: "COR Measures"
+  }
+
+  measure: cat_cost_ratio {
+    label: "Cat Cost Ratio"
+    type: number
+    sql: 1.0*${cat_cost}/nullif(${earned_premium},0) ;;
+    value_format_name: percent_1
+    group_label: "COR Measures"
+  }
+
+
+  ## NEEDS UPDATING FOR UWY5 ABE ###
+  measure: abe_projected_incurred{
+    label: "ABE Projected Incurred"
+    type: sum
+    sql: case when ${TABLE}.uw_year = '1' then 0.603*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.552*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.501*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.452*${TABLE}.earned_premium
+              else 0 end ;;
+    value_format_name: decimal_0
+    group_label: "COR Measures"
+  }
+
+  measure: abe_by_uw_year{
+    label: "ABE by UW Year"
+    type: number
+    sql: 1.0*${abe_projected_incurred}/nullif(${earned_premium},0) ;;
+    value_format_name: percent_1
+    group_label: "COR Measures"
+  }
+
+  measure: fixed_commission {
+    label: "Fixed Commission"
+    type: number
+    sql: 0.16 ;;
+    value_format_name: percent_1
+    group_label: "COR Measures"
+  }
+
+  measure: fixed_commission_costs {
+    label: "Fixed Commission (£)"
+    type: number
+    sql: 0.16*${earned_premium} ;;
+    value_format_name: decimal_0
+    group_label: "COR Measures"
+  }
+
 }
