@@ -425,6 +425,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct17 - Sep18' then ${TABLE}.earned_premium*0.0995
               when ${cat_period} = 'Oct18 - Sep19' then ${TABLE}.earned_premium*0.0917
               when ${cat_period} = 'Oct19 - Sep20' then ${TABLE}.earned_premium*0.0917
+              when ${cat_period} = 'Oct20 - Sep21' then ${TABLE}.earned_premium*0.0951
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -460,20 +461,21 @@ view: lk_h_reserving_vectors {
     group_label: "COR Measures"
   }
 
+  measure: fixed_commission_costs {
+    label: "Fixed Commission (£)"
+    type: sum
+    sql: case when ${TABLE}.uw_year in(1,2,3) then 0.16*${TABLE}.earned_premium else 0.08*${TABLE}.earned_premium end ;;
+    value_format_name: decimal_0
+    group_label: "COR Measures"
+  }
+
   measure: fixed_commission {
     label: "Fixed Commission"
     type: number
-    sql: 0.16 ;;
+    sql: ${fixed_commission_costs}/nullif(${earned_premium},0) ;;
     value_format_name: percent_1
     group_label: "COR Measures"
   }
 
-  measure: fixed_commission_costs {
-    label: "Fixed Commission (£)"
-    type: number
-    sql: 0.16*${earned_premium} ;;
-    value_format_name: decimal_0
-    group_label: "COR Measures"
-  }
 
 }
