@@ -440,15 +440,15 @@ view: lk_h_reserving_vectors {
   }
 
 
-  ## NEEDS UPDATING FOR UWY5 ABE ###
+  ### ASAT January 31st 2021 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
-    sql: case when ${TABLE}.uw_year = '1' then 0.638*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.567*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.504*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.447*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.364*${TABLE}.earned_premium
+    sql: case when ${TABLE}.uw_year = '1' then 0.649*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.577*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.512*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.462*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.429*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
