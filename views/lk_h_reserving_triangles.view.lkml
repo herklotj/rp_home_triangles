@@ -83,6 +83,22 @@ view: lk_h_reserving_triangles {
 
   dimension: fuw_year_dev_month {
     type: number
+    sql: case when ${TABLE}.fuw_year = '2017' then months_between(${TABLE}.dev_month,'2016-02-01')+1
+              when ${TABLE}.fuw_year = '2018' then months_between(${TABLE}.dev_month,'2017-02-01')+1
+              when ${TABLE}.fuw_year = '2019' then months_between(${TABLE}.dev_month,'2018-02-01')+1
+              when ${TABLE}.fuw_year = '2020' then months_between(${TABLE}.dev_month,'2019-02-01')+1
+              when ${TABLE}.fuw_year = '2021' then months_between(${TABLE}.dev_month,'2020-02-01')+1
+              when ${TABLE}.fuw_year = '2022' then months_between(${TABLE}.dev_month,'2021-02-01')+1
+              when ${TABLE}.fuw_year = '2023' then months_between(${TABLE}.dev_month,'2022-02-01')+1
+              when ${TABLE}.fuw_year = '2024' then months_between(${TABLE}.dev_month,'2023-02-01')+1
+              when ${TABLE}.fuw_year = '2025' then months_between(${TABLE}.dev_month,'2024-02-01')+1
+              when ${TABLE}.fuw_year = '2026' then months_between(${TABLE}.dev_month,'2025-02-01')+1
+              else null end   ;;
+    label: "FUW Year Dev"
+  }
+
+  dimension: acc_year_dev_month {
+    type: number
     sql: case when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2016-02-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2016-02-01' ))))) then months_between(${TABLE}.dev_month,'2016-02-01')+1
               when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2017-02-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2017-02-01' ))))) then months_between(${TABLE}.dev_month,'2017-02-01')+1
               when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2018-02-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(year,1, TIMESTAMP '2018-02-01' ))))) then months_between(${TABLE}.dev_month,'2018-02-01')+1
