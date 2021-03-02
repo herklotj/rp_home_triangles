@@ -417,7 +417,7 @@ view: lk_h_reserving_vectors {
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.0555*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '2' then 0.0567*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.0544${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '4' then 0.0531*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0506*${TABLE}.earned_premium
               else 0.0537*${TABLE}.earned_premium end ;;
