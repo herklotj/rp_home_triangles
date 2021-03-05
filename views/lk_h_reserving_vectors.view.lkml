@@ -36,7 +36,7 @@ view: lk_h_reserving_vectors {
 
   dimension: fuw_year {
     type: number
-    sql: ${TABLE}.fuw_year ;;
+    sql: concat('FY',${TABLE}.fuw_year) ;;
     label: "FUW Year"
   }
 
