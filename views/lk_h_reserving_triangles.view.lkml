@@ -55,7 +55,7 @@ view: lk_h_reserving_triangles {
 
   dimension: fuw_year {
     type: number
-    sql: concat('FY',${TABLE}.fuw_year) ;;
+    sql: ${TABLE}.fuw_year ;;
     label: "FUW Year"
   }
 
