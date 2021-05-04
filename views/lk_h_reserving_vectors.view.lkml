@@ -461,11 +461,11 @@ view: lk_h_reserving_vectors {
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
-    sql: case when ${TABLE}.uw_year = '1' then 0.649*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.577*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.512*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.462*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.429*${TABLE}.earned_premium
+    sql: case when ${TABLE}.uw_year = '1' then 0.650*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.580*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.517*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.450*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.388*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
