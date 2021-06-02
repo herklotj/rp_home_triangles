@@ -412,16 +412,16 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ## ASAT 4th November 2020 ###
+  ## ASAT 2nd June 2021 ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.0555*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '2' then 0.0567*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.0531*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.0506*${TABLE}.earned_premium
-              else 0.0537*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '4' then 0.0525*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.0496*${TABLE}.earned_premium
+              else 0.0530*${TABLE}.earned_premium end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
   }
