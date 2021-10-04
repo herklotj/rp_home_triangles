@@ -154,6 +154,8 @@ view: lk_h_reserving_vectors {
                     then 'Oct20 - Sep21'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2021-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2022-10-01')))
                     then 'Oct21 - Sep22'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2022-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2023-10-01')))
+                    then 'Oct22 - Sep23'
               else null end   ;;
     label: "Cat Period"
   }
@@ -479,7 +481,7 @@ view: lk_h_reserving_vectors {
     group_label: "COR Measures"
   }
 
-  ## NEEDS UPDATING FOR CAT 2020 RENEWAL ###
+
   measure: cat_cost {
     label: "Cat Cover Cost"
     type: sum
@@ -488,6 +490,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct18 - Sep19' then ${TABLE}.earned_premium*0.0917
               when ${cat_period} = 'Oct19 - Sep20' then ${TABLE}.earned_premium*0.0917
               when ${cat_period} = 'Oct20 - Sep21' then ${TABLE}.earned_premium*0.0951
+              when ${cat_period} = 'Oct21 - Sep22' then ${TABLE}.earned_premium*0.0971
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
