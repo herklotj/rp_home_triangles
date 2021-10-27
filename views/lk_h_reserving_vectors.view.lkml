@@ -505,15 +505,16 @@ view: lk_h_reserving_vectors {
   }
 
 
-  ### ASAT June 30th 2021 ###
+  ### ASAT September 30th 2021 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.655*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.580*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.519*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.442*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.406*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.587*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.529*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.449*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.404*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 0.428*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
