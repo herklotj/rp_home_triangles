@@ -459,7 +459,7 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ## ASAT 2nd June 2021 ###
+  ### ASAT January 11th 2022 (Placeholder for 2021 based on 25% levy reduction) ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
@@ -467,8 +467,9 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '2' then 0.0567*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '4' then 0.0525*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.0496*${TABLE}.earned_premium
-              else 0.0530*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 0.0379*${TABLE}.earned_premium
+              else 0.0490*${TABLE}.earned_premium end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
   }
