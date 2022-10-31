@@ -493,6 +493,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct19 - Sep20' then ${TABLE}.earned_premium*0.0917
               when ${cat_period} = 'Oct20 - Sep21' then ${TABLE}.earned_premium*0.0951
               when ${cat_period} = 'Oct21 - Sep22' then ${TABLE}.earned_premium*0.0971
+              when ${cat_period} = 'Oct22 - Sep23' then ${TABLE}.earned_premium*0.1250
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -507,16 +508,17 @@ view: lk_h_reserving_vectors {
   }
 
 
-  ### ASAT June 30th 2022 ###
+  ### ASAT September 30th 2022 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
-    sql: case when ${TABLE}.uw_year = '1' then 0.644*${TABLE}.earned_premium
+    sql: case when ${TABLE}.uw_year = '1' then 0.643*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '2' then 0.564*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '3' then 0.528*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.464*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.491*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 0.555*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.469*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.500*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 0.808*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.490*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
