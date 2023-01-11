@@ -469,8 +469,8 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '4' then 0.0526*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '6' then 0.0367*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.0379*${TABLE}.earned_premium
-              else 0.0469*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '7' then 0.0381*${TABLE}.earned_premium
+              else 0.0463*${TABLE}.earned_premium end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
   }
