@@ -471,6 +471,7 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '6' then 0.0374*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '7' then 0.0393*${TABLE}.earned_premium
               else 0.0393*${TABLE}.earned_premium end ;;
+
     value_format_name: decimal_0
     group_label: "COR Measures"
   }
@@ -508,7 +509,9 @@ view: lk_h_reserving_vectors {
   }
 
 
+
   ### ASAT January 31st 2023 ###
+
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
