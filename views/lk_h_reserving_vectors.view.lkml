@@ -459,17 +459,18 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ### ASAT January 11th 2022 (Placeholder for 2021 based on 25% levy reduction) ###
+  ### ASAT March 2nd 2023 ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.0555*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '2' then 0.0567*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.0525*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.0526*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 0.0379*${TABLE}.earned_premium
-              else 0.0490*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '6' then 0.0374*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.0393*${TABLE}.earned_premium
+              else 0.0393*${TABLE}.earned_premium end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
   }
@@ -492,6 +493,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct19 - Sep20' then ${TABLE}.earned_premium*0.0917
               when ${cat_period} = 'Oct20 - Sep21' then ${TABLE}.earned_premium*0.0951
               when ${cat_period} = 'Oct21 - Sep22' then ${TABLE}.earned_premium*0.0971
+              when ${cat_period} = 'Oct22 - Sep23' then ${TABLE}.earned_premium*0.1250
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -506,16 +508,17 @@ view: lk_h_reserving_vectors {
   }
 
 
-  ### ASAT June 30th 2022 ###
+  ### ASAT January 31st 2023 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
-    sql: case when ${TABLE}.uw_year = '1' then 0.644*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.564*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.528*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.464*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.491*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 0.555*${TABLE}.earned_premium
+    sql: case when ${TABLE}.uw_year = '1' then 0.643*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.571*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.526*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.468*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.509*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 0.879*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.789*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
