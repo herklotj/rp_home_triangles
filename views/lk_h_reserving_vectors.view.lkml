@@ -156,6 +156,8 @@ view: lk_h_reserving_vectors {
                     then 'Oct21 - Sep22'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2022-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2023-10-01')))
                     then 'Oct22 - Sep23'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2023-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2024-10-01')))
+                    then 'Oct23 - Sep24'
               else null end   ;;
     label: "Cat Period"
   }
@@ -459,7 +461,7 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ### ASAT March 2nd 2023 ###
+  ### ASAT October 31st 2023 ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
@@ -468,9 +470,10 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '4' then 0.0526*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 0.0374*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.0393*${TABLE}.earned_premium
-              else 0.0393*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '6' then 0.0375*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.0392*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '8' then 0.0383*${TABLE}.earned_premium
+              else 0.0383*${TABLE}.earned_premium end ;;
 
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -484,7 +487,7 @@ view: lk_h_reserving_vectors {
     group_label: "COR Measures"
   }
 
-
+  ### ASAT October 31st 2023 ###
   measure: cat_cost {
     label: "Cat Cover Cost"
     type: sum
@@ -495,6 +498,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct20 - Sep21' then ${TABLE}.earned_premium*0.0951
               when ${cat_period} = 'Oct21 - Sep22' then ${TABLE}.earned_premium*0.0971
               when ${cat_period} = 'Oct22 - Sep23' then ${TABLE}.earned_premium*0.1250
+              when ${cat_period} = 'Oct23 - Sep24' then ${TABLE}.earned_premium*0.1307
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -510,18 +514,18 @@ view: lk_h_reserving_vectors {
 
 
 
-  ### ASAT June 30th 2023 ###
-
+  ### ASAT October 31st 2023 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.642*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.581*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.523*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.463*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.517*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 1.041*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.902*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.582*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.524*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.462*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.523*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 1.049*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.796*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '8' then 0.692*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"

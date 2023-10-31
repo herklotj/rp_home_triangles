@@ -175,6 +175,8 @@ view: lk_h_reserving_triangles {
                     then 'Oct21 - Sep22'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2022-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2023-10-01')))
                     then 'Oct22 - Sep23'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2023-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2024-10-01')))
+                    then 'Oct23 - Sep24'
               else null end   ;;
     label: "Cat Period"
   }
