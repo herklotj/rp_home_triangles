@@ -514,18 +514,18 @@ view: lk_h_reserving_vectors {
 
 
 
-  ### ASAT March 31st 2024 ###
+  ### ASAT June 30th 2024 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
     sql: case when ${TABLE}.uw_year = '1' then 0.646*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.593*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.529*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.463*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.516*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 1.082*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.855*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '8' then 0.911*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.607*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.533*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.475*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.531*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 1.108*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.856*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '8' then 0.752*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
