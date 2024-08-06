@@ -461,7 +461,7 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ### ASAT October 31st 2023 ###
+  ### ASAT August 6th 2024 ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
@@ -470,10 +470,10 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '3' then 0.0544*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '4' then 0.0526*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 0.0375*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 0.0376*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '7' then 0.0365*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '8' then 0.0346*${TABLE}.earned_premium
-              else 0.0346*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '8' then 0.0385*${TABLE}.earned_premium
+              else 0.0385*${TABLE}.earned_premium end ;;
 
     value_format_name: decimal_0
     group_label: "COR Measures"
