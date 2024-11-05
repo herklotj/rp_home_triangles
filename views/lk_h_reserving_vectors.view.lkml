@@ -537,7 +537,7 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '2' then 0.610*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '3' then 0.541*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '4' then 0.479*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.541*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.547*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '6' then 1.156*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '7' then 0.884*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '8' then 0.730*${TABLE}.earned_premium
