@@ -136,6 +136,17 @@ view: lk_h_reserving_vectors {
     when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2024-05-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-05-01' ))))) then months_between(${TABLE}.acc_month,'2024-05-01')+1
     when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2024-08-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-08-01' ))))) then months_between(${TABLE}.acc_month,'2024-08-01')+1
     when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2024-11-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-11-01' ))))) then months_between(${TABLE}.acc_month,'2024-11-01')+1
+
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2025-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-02-01' ))))) then months_between(${TABLE}.acc_month,'2025-02-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2025-05-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-05-01' ))))) then months_between(${TABLE}.acc_month,'2025-05-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2025-08-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-08-01' ))))) then months_between(${TABLE}.acc_month,'2025-08-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2025-11-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-11-01' ))))) then months_between(${TABLE}.acc_month,'2025-11-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2026-02-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-02-01' ))))) then months_between(${TABLE}.acc_month,'2026-02-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2026-05-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-05-01' ))))) then months_between(${TABLE}.acc_month,'2026-05-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2026-08-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-08-01' ))))) then months_between(${TABLE}.acc_month,'2026-08-01')+1
+    when (((cast(lk_h_reserving_vectors.acc_month as timestamp) ) >= ((TIMESTAMP '2026-11-01')) AND (cast(lk_h_reserving_vectors.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-11-01' ))))) then months_between(${TABLE}.acc_month,'2026-11-01')+1
+
+
     else null end   ;;
     label: "Accident Quarter Dev"
   }
@@ -158,6 +169,8 @@ view: lk_h_reserving_vectors {
                     then 'Oct22 - Sep23'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2023-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2024-10-01')))
                     then 'Oct23 - Sep24'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2024-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2025-07-01')))
+                    then 'Oct24 - Jun25'
               else null end   ;;
     label: "Cat Period"
   }
@@ -461,7 +474,7 @@ view: lk_h_reserving_vectors {
 
   ### Fields for COR
 
-  ### ASAT August 6th 2024 ###
+  ### ASAT November 5th 2024 ###
   measure: flood_re_levy {
     label: "Flood Re Levy"
     type: sum
@@ -471,9 +484,10 @@ view: lk_h_reserving_vectors {
               when ${TABLE}.uw_year = '4' then 0.0526*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '5' then 0.0422*${TABLE}.earned_premium
               when ${TABLE}.uw_year = '6' then 0.0376*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.0365*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '8' then 0.0385*${TABLE}.earned_premium
-              else 0.0385*${TABLE}.earned_premium end ;;
+              when ${TABLE}.uw_year = '7' then 0.0364*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '8' then 0.0384*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '9' then 0.0414*${TABLE}.earned_premium
+              else 0.0414*${TABLE}.earned_premium end ;;
 
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -487,7 +501,7 @@ view: lk_h_reserving_vectors {
     group_label: "COR Measures"
   }
 
-  ### ASAT October 31st 2023 ###
+  ### ASAT November 5th 2024 ###
   measure: cat_cost {
     label: "Cat Cover Cost"
     type: sum
@@ -499,6 +513,7 @@ view: lk_h_reserving_vectors {
               when ${cat_period} = 'Oct21 - Sep22' then ${TABLE}.earned_premium*0.0971
               when ${cat_period} = 'Oct22 - Sep23' then ${TABLE}.earned_premium*0.1250
               when ${cat_period} = 'Oct23 - Sep24' then ${TABLE}.earned_premium*0.1307
+              when ${cat_period} = 'Oct24 - Jun25' then ${TABLE}.earned_premium*0.11368
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"
@@ -514,18 +529,19 @@ view: lk_h_reserving_vectors {
 
 
 
-  ### ASAT June 30th 2024 ###
+  ### ASAT September 30th 2024 ###
   measure: abe_projected_incurred{
     label: "ABE Projected Incurred"
     type: sum
-    sql: case when ${TABLE}.uw_year = '1' then 0.646*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '2' then 0.607*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '3' then 0.533*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '4' then 0.475*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '5' then 0.531*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '6' then 1.108*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '7' then 0.856*${TABLE}.earned_premium
-              when ${TABLE}.uw_year = '8' then 0.752*${TABLE}.earned_premium
+    sql: case when ${TABLE}.uw_year = '1' then 0.649*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '2' then 0.610*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '3' then 0.541*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '4' then 0.479*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '5' then 0.541*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '6' then 1.156*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '7' then 0.884*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '8' then 0.730*${TABLE}.earned_premium
+              when ${TABLE}.uw_year = '9' then 0.937*${TABLE}.earned_premium
               else 0 end ;;
     value_format_name: decimal_0
     group_label: "COR Measures"

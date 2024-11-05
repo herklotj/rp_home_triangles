@@ -155,6 +155,16 @@ view: lk_h_reserving_triangles {
     when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2024-05-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-05-01' ))))) then months_between(${TABLE}.dev_month,'2024-05-01')+1
     when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2024-08-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-08-01' ))))) then months_between(${TABLE}.dev_month,'2024-08-01')+1
     when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2024-11-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2024-11-01' ))))) then months_between(${TABLE}.dev_month,'2024-11-01')+1
+
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2025-02-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-02-01' ))))) then months_between(${TABLE}.dev_month,'2025-02-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2025-05-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-05-01' ))))) then months_between(${TABLE}.dev_month,'2025-05-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2025-08-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-08-01' ))))) then months_between(${TABLE}.dev_month,'2025-08-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2025-11-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2025-11-01' ))))) then months_between(${TABLE}.dev_month,'2025-11-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2026-02-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-02-01' ))))) then months_between(${TABLE}.dev_month,'2026-02-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2026-05-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-05-01' ))))) then months_between(${TABLE}.dev_month,'2026-05-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2026-08-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-08-01' ))))) then months_between(${TABLE}.dev_month,'2026-08-01')+1
+    when (((cast(lk_h_reserving_triangles.acc_month as timestamp) ) >= ((TIMESTAMP '2026-11-01')) AND (cast(lk_h_reserving_triangles.acc_month as timestamp) ) < ((TIMESTAMPADD(month,3, TIMESTAMP '2026-11-01' ))))) then months_between(${TABLE}.dev_month,'2026-11-01')+1
+
     else null end   ;;
     label: "Accident Quarter Dev"
   }
@@ -177,6 +187,8 @@ view: lk_h_reserving_triangles {
                     then 'Oct22 - Sep23'
               when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2023-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2024-10-01')))
                     then 'Oct23 - Sep24'
+              when (((cast(${TABLE}.acc_month as timestamp) ) >= (TIMESTAMP '2024-10-01') AND (cast(${TABLE}.acc_month as timestamp) ) < (TIMESTAMP '2025-07-01')))
+                    then 'Oct24 - Jun25'
               else null end   ;;
     label: "Cat Period"
   }
