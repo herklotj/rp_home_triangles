@@ -5,8 +5,8 @@ include: "/views/**/*.view"
 fiscal_month_offset: -11
 
 datagroup: home_triangles_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  sql_trigger: SELECT MAX(load_dttm) FROM actian.lk_h_reserving_triangles;;
+  max_cache_age: "240 hours"
 }
 
 persist_with: home_triangles_default_datagroup
