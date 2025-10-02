@@ -18,3 +18,5 @@ explore: lk_h_reserving_triangles {
 explore: lk_h_reserving_vectors {
   label: "Reserving Vectors"
 }
+
+explore: lk_h_policy_history_scored {}
