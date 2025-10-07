@@ -59,64 +59,64 @@ view: lk_h_policy_history_scored {
   measure: inforce_at_end_of_last_month{
     label: "Last Month"
     type: number
-    sql: sum(CASE WHEN to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -1, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -1, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '1' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '1' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_2_months_ago{
     label: "2 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -2, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -2, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '2' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '2' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_3_months_ago{
     label: "3 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -3, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -3, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '3' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '3' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_4_months_ago{
     label: "4 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -4, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -4, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '4' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '4' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_5_months_ago{
     label: "5 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -5, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -5, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '5' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '5' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_6_months_ago{
     label: "6 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -6, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -6, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '6' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '6' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_7_months_ago{
     label: "7 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -7, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -7, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '7' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '7' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
   measure: inforce_8_months_ago{
     label: "8 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -8, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -8, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '8' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '8' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
@@ -124,8 +124,8 @@ view: lk_h_policy_history_scored {
   measure: inforce_9_months_ago{
     label: "9 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -9, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -9, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '9' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '9' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
@@ -133,8 +133,8 @@ view: lk_h_policy_history_scored {
   measure: inforce_10_months_ago{
     label: "10 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -10, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -10, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '10' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '10' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
@@ -142,8 +142,8 @@ view: lk_h_policy_history_scored {
   measure: inforce_11_months_ago{
     label: "11 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -11, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -11, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '11' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '11' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
@@ -151,8 +151,8 @@ view: lk_h_policy_history_scored {
   measure: inforce_12_months_ago{
     label: "12 Months Ago"
     type: number
-    sql: sum(case when to_date (schedule_cover_start_dttm) < LAST_DAY(DATEADD(MONTH, -12, to_date (sysdate))) and to_date (schedule_cover_end_dttm) >= LAST_DAY(DATEADD(MONTH, -12, to_date (sysdate))) then 1
-            else 0 end);;
+    sql: SUM(CASE WHEN TO_DATE(schedule_cover_start_dttm) < LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '12' MONTH)
+             AND TO_DATE(schedule_cover_end_dttm) >= LAST_DAY(TO_DATE(SYSDATE) - INTERVAL '12' MONTH) THEN 1 ELSE 0 END);;
     value_format: "#,##0"
   }
 
