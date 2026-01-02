@@ -1,5 +1,5 @@
 view: lk_h_reserving_vectors {
-  sql_table_name: actian.lk_h_reserving_vectors ;;
+  sql_table_name: dbuser.sas_h_reserving_vectors ;;
 
   dimension_group: load_datetime {
     type: time

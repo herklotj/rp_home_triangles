@@ -1,5 +1,5 @@
 view: lk_h_reserving_triangles {
-  sql_table_name: actian.lk_h_reserving_triangles ;;
+  sql_table_name: dbuser.sas_h_reserving_triangles ;;
 
   dimension_group: load_datetime {
     type: time

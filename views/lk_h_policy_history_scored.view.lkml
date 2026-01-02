@@ -1,5 +1,5 @@
 view: lk_h_policy_history_scored {
-    sql_table_name: actian.lk_h_policy_history_scored ;;
+    sql_table_name: dbuser.sas_h_policy_history_scored ;;
 
   dimension: home_cover_level {
     type: string
