@@ -21,6 +21,11 @@ view: lk_h_reserving_triangles {
     html: {{ rendered_value | append: "-01" | date: "%B %Y" }};;
   }
 
+  dimension: load_mth_formatted_new {
+    sql: (TO_CHAR(DATE_TRUNC('month', cast(DATEADD(MONTH, -1, to_date (sysdate)) as timestamp) ), 'YYYY-MM')) ;;
+    html: {{ rendered_value | append: "-01" | date: "%B %Y" }};;
+  }
+
   dimension_group: acc_month {
     type: time
     timeframes: [
